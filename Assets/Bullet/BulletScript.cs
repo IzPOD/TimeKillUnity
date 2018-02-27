@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    
+    public int damage = 1;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +14,16 @@ public class BulletScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public int GetDamage() {
+        return damage;
+    }
+
+    public void Hit() {
+        Destroy(gameObject);
+        WinOrLoseScript winOrLose = GameObject.Find("WinOrLose").GetComponent<WinOrLoseScript>();
+        winOrLose.CheckWinOrLose();
+        
+        
+    }
 }

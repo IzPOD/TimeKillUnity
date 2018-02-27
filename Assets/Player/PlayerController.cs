@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    private int PlayerPositionOnLane = 1;
+    public GameObject bullet;
+    public GameObject TimeCircl;
     public float projectileSpeed= 2f;
-    int bulletNumber =0;
     public int numberOfBullets = 8;
     public float shootNextBullet = 2f;
+
 
     List<GameObject> bulletsMasLeft = new List<GameObject>();
     List<GameObject> bulletsMasMiddle = new List<GameObject>();
     List<GameObject> bulletsMasRight = new List<GameObject>();
     List<GameObject> allBullets = new List<GameObject>();
 
-    public GameObject bullet;
-    public GameObject TimeCircl;
 
-    bool shootCheck = true;
+    private bool shootCheck = false;
+    private int PlayerPositionOnLane = 1;
+
+
     // Use this for initialization
     void Start() {
         InvokeRepeating("SpawnBullet", 1, 1);
@@ -43,10 +45,11 @@ public class PlayerController : MonoBehaviour {
             PlayerPosition();
         }
 
-        if (numberOfBullets == 0 && shootCheck) {
+        if (shootCheck) {
             ShootBullets();
         }
 
+        
     }
 
     void PlayerPosition() {
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour {
         if (numberOfBullets == 0) {
             CancelInvoke("SpawnBullet");
             Destroy(TimeCircl);
+            shootCheck = true;
         }
 
 
@@ -137,13 +141,13 @@ public class PlayerController : MonoBehaviour {
 
     void ShootBullets() {
         
-        allBullets[bulletNumber].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+        allBullets[numberOfBullets].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
 
-        if (allBullets[bulletNumber].transform.position.y > shootNextBullet ) {
-            bulletNumber++;
+        if (allBullets[numberOfBullets].transform.position.y > shootNextBullet ) {
+            numberOfBullets++;
 
         }
-        if (bulletNumber == allBullets.Count) {
+        if (numberOfBullets == allBullets.Count) {
             shootCheck = false;
         }
     }
