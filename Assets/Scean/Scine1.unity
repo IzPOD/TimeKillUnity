@@ -297,6 +297,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114742361167654786, guid: 84c15771049896f42b4c158f5df44516,
+        type: 2}
+      propertyPath: numberOfBullets
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114742361167654786, guid: 84c15771049896f42b4c158f5df44516,
+        type: 2}
+      propertyPath: firingRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114742361167654786, guid: 84c15771049896f42b4c158f5df44516,
+        type: 2}
+      propertyPath: projectileSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84c15771049896f42b4c158f5df44516, type: 2}
   m_IsPrefabParent: 0

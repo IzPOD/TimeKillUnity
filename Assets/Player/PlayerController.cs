@@ -5,24 +5,28 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private int PlayerPositionOnLane = 1;
-    
-
+    public float projectileSpeed= 2f;
+    int bulletNumber =0;
     public int numberOfBullets = 8;
+    public float shootNextBullet = 2f;
 
     List<GameObject> bulletsMasLeft = new List<GameObject>();
     List<GameObject> bulletsMasMiddle = new List<GameObject>();
     List<GameObject> bulletsMasRight = new List<GameObject>();
+    List<GameObject> allBullets = new List<GameObject>();
 
     public GameObject bullet;
     public GameObject TimeCircl;
+
+    bool shootCheck = true;
     // Use this for initialization
-    void Start () {
+    void Start() {
         InvokeRepeating("SpawnBullet", 1, 1);
         TimeCircl = Instantiate(TimeCircl);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             PlayerPositionOnLane--;
             if (PlayerPositionOnLane < 0) {
@@ -39,8 +43,11 @@ public class PlayerController : MonoBehaviour {
             PlayerPosition();
         }
 
-        
-     }
+        if (numberOfBullets == 0 && shootCheck) {
+            ShootBullets();
+        }
+
+    }
 
     void PlayerPosition() {
         switch (PlayerPositionOnLane) {
@@ -61,28 +68,25 @@ public class PlayerController : MonoBehaviour {
         switch (PlayerPositionOnLane) {
             case 0:
                 bulletsMasLeft.Add(Instantiate(bullet));
-                Debug.Log("Лево: "+bulletsMasLeft.Count);
                 BulletPosition(bulletsMasLeft, PlayerPositionOnLane);
+                allBullets.Add(bulletsMasLeft[bulletsMasLeft.Count - 1]);
                 break;
             case 1:
                 bulletsMasMiddle.Add(Instantiate(bullet));
-                Debug.Log("Центр: " + bulletsMasMiddle.Count);
                 BulletPosition(bulletsMasMiddle, PlayerPositionOnLane);
+                allBullets.Add(bulletsMasMiddle[bulletsMasMiddle.Count - 1]);
                 break;
             case 2:
                 bulletsMasRight.Add(Instantiate(bullet));
-                Debug.Log("Право: " + bulletsMasRight.Count);
                 BulletPosition(bulletsMasRight, PlayerPositionOnLane);
+                allBullets.Add(bulletsMasRight[bulletsMasRight.Count - 1]);
                 break;
         }
-
-
 
         numberOfBullets--;
         if (numberOfBullets == 0) {
             CancelInvoke("SpawnBullet");
             Destroy(TimeCircl);
-
         }
 
 
@@ -91,7 +95,7 @@ public class PlayerController : MonoBehaviour {
     void BulletPosition(List<GameObject> laneList, int numberLane) {
         switch (laneList.Count) {
             case 1:
-                laneList[0].GetComponent<Transform>().position = new Vector3(numberLane+0.5f, 1.1f, 0);
+                laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.1f, 0);
                 break;
             case 2:
                 laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.1f, 0);
@@ -128,7 +132,20 @@ public class PlayerController : MonoBehaviour {
                 break;
         }
 
+
+    }
+
+    void ShootBullets() {
         
+        allBullets[bulletNumber].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+
+        if (allBullets[bulletNumber].transform.position.y > shootNextBullet ) {
+            bulletNumber++;
+
+        }
+        if (bulletNumber == allBullets.Count) {
+            shootCheck = false;
+        }
     }
 
 }
