@@ -5,10 +5,11 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
     
     public int damage = 1;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,9 +22,7 @@ public class BulletScript : MonoBehaviour {
 
     public void Hit() {
         Destroy(gameObject);
-        WinOrLoseScript winOrLose = GameObject.Find("WinOrLose").GetComponent<WinOrLoseScript>();
-        winOrLose.CheckWinOrLose();
-        
-        
+        WinOrLoseScript winOrLoseScript = GameObject.Find("WinOrLose").GetComponent<WinOrLoseScript>();
+        winOrLoseScript.CheckWinOrLose();
     }
 }

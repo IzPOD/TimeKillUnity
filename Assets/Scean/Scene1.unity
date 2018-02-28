@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 1534286662753998, guid: f1aed0f656a7976489652e7e4f6eab51,
     type: 2}
+  targetCount: 0
 --- !u!1001 &343718109
 Prefab:
   m_ObjectHideFlags: 0
@@ -532,7 +533,7 @@ Prefab:
     - target: {fileID: 114742361167654786, guid: 84c15771049896f42b4c158f5df44516,
         type: 2}
       propertyPath: numberOfBullets
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114742361167654786, guid: 84c15771049896f42b4c158f5df44516,
         type: 2}
