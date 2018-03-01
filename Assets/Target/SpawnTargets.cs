@@ -11,7 +11,6 @@ public class SpawnTargets : MonoBehaviour {
         foreach (Transform child in transform) {
             GameObject target = Instantiate(targetPrefab, child.transform.position, Quaternion.identity) as GameObject;
             target.transform.parent = child;
-            
         }
     }
 	

@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
     public GameObject TimeCircl;
     public float projectileSpeed= 2f;
     public int numberOfBullets = 8;
-    public float shootNextBullet = 2f;
 
 
     List<GameObject> bulletsMasLeft = new List<GameObject>();
@@ -141,15 +140,19 @@ public class PlayerController : MonoBehaviour {
 
     void ShootBullets() {
         
-        allBullets[numberOfBullets].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
-
-        if (allBullets[numberOfBullets].transform.position.y > shootNextBullet ) {
+        if (allBullets[numberOfBullets] == null) {
             numberOfBullets++;
-
         }
+        else {
+            allBullets[numberOfBullets].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+        }
+
         if (numberOfBullets == allBullets.Count) {
             shootCheck = false;
         }
+
+                
+
     }
 
 }

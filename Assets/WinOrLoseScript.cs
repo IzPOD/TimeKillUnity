@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class WinOrLoseScript : MonoBehaviour {
 
-    SpawnTargets spawnTargets;
     bool check = false;
 
     // Use this for initialization
-    void Start () {
-        
+    void Start() {
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (check) {
             if (!GameObject.Find("Bullet(Clone)")) {
-                
 
                 if (!GameObject.Find("Target(Clone)")) {
                     Debug.Log("ti win");
@@ -27,11 +25,13 @@ public class WinOrLoseScript : MonoBehaviour {
 
                 check = false;
             }
+            else {
+                check = false;
+            }
         }
     }
-    
+
     public void CheckWinOrLose() {
         check = true;
-        
     }
 }

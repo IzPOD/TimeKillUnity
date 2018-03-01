@@ -9,8 +9,6 @@ public class TargetScript : MonoBehaviour {
     // Use this for initialization
     void Start() {
         
-
-
     }
 
     // Update is called once per frame
@@ -23,7 +21,6 @@ public class TargetScript : MonoBehaviour {
         targetHealth -= bullet.GetDamage();
         if (targetHealth <= 0) {
             Destroy(gameObject);
-            
         }
         bullet.Hit();
 
