@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject bullet;
     public GameObject TimeCircl;
+    public GameObject Countdown;
     public float projectileSpeed= 2f;
     public int numberOfBullets = 8;
-
+    public Swipe swipeContrals;
+    
 
     List<GameObject> bulletsMasLeft = new List<GameObject>();
     List<GameObject> bulletsMasMiddle = new List<GameObject>();
@@ -22,8 +24,9 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        InvokeRepeating("SpawnBullet", 1, 1);
+        InvokeRepeating("SpawnBullet", 3, 1);
         TimeCircl = Instantiate(TimeCircl);
+        Countdown = Instantiate(Countdown);
     }
 
     // Update is called once per frame
@@ -32,6 +35,22 @@ public class PlayerController : MonoBehaviour {
             PlayerPositionOnLane--;
             if (PlayerPositionOnLane < 0) {
                 PlayerPositionOnLane = 0;
+            }
+            PlayerPosition();
+        }
+
+        if (swipeContrals.SwipeLeft) {
+            PlayerPositionOnLane--;
+            if (PlayerPositionOnLane < 0) {
+                PlayerPositionOnLane = 0;
+            }
+            PlayerPosition();
+        }
+
+        if (swipeContrals.SwipeRight) {
+            PlayerPositionOnLane++;
+            if (PlayerPositionOnLane > 2) {
+                PlayerPositionOnLane = 2;
             }
             PlayerPosition();
         }
@@ -66,7 +85,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void SpawnBullet() {
-
+        Destroy(Countdown);
         switch (PlayerPositionOnLane) {
             case 0:
                 bulletsMasLeft.Add(Instantiate(bullet));

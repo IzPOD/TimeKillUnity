@@ -52,9 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e41b00d2cd6569449056da010d37a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfBullets: 8
   bullet: {fileID: 1576312333720078, guid: 7f3085b761f36254699bd4fce9ded3d3, type: 2}
   TimeCircl: {fileID: 1761446887513432, guid: 9608df3aaaaf5004aa9380dc60aeb384, type: 2}
+  Countdown: {fileID: 1648580814196658, guid: e15f9500bb0201241a322556222d52bf, type: 2}
+  projectileSpeed: 2
+  numberOfBullets: 8
 --- !u!212 &212077066079320182
 SpriteRenderer:
   m_ObjectHideFlags: 1

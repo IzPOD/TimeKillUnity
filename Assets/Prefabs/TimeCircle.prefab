@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4139852650204958}
   - component: {fileID: 212656891136351814}
   - component: {fileID: 95256503680598366}
-  - component: {fileID: 114901859693087708}
   m_Layer: 0
   m_Name: TimeCircle
   m_TagString: Untagged
@@ -59,17 +58,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114901859693087708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761446887513432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621c5346a5440ae4dadf7d96a5edc8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212656891136351814
 SpriteRenderer:
   m_ObjectHideFlags: 1
