@@ -22,11 +22,12 @@ public class WinOrLoseScript : MonoBehaviour {
                 if (!GameObject.Find("Target(Clone)")) {
                     Debug.Log("ti win");
                     WinEndLvLMenuCanvas = Instantiate(WinEndLvLMenuCanvas);
+                    WinEndLvLMenuCanvas.GetComponent<Canvas>().enabled = true;
                 }
                 else {
                     Debug.Log("ti lose");
                     LoseEndLvLMenuCanvas = Instantiate(LoseEndLvLMenuCanvas);
-
+                    LoseEndLvLMenuCanvas.GetComponent<Canvas>().enabled = true;
                 }
 
                 check = false;
