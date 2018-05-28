@@ -55,3 +55,4 @@ MonoBehaviour:
     type: 2}
   WinEndLvLMenuCanvas: {fileID: 1004738968495112, guid: d56052930ea87d14ca3b0b3a8e614014,
     type: 2}
+  NextLvLName: 

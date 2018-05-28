@@ -13,6 +13,11 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(name);
     }
 
+    public void RestartLevel() {
+        Debug.Log("Restart Lvl");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void getSeconds(float seconds) {
         secondsAll = seconds;
     }
