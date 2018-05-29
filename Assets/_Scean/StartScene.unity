@@ -1128,6 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed86d098dac6cdb4ab368038b30f92d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myScrollRect: {fileID: 1703166143}
   lvlButtons:
   - {fileID: 453545848}
   - {fileID: 1304151051}
@@ -1136,6 +1137,7 @@ MonoBehaviour:
   scaleOffset: 2
   buttinOffset: 100
   scaleSpeed: 12
+  scrollSpeed: 3
 --- !u!1 &1703166139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1150,7 @@ GameObject:
   - component: {fileID: 1703166142}
   - component: {fileID: 1703166141}
   - component: {fileID: 1703166144}
+  - component: {fileID: 1703166145}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -1228,6 +1231,7 @@ MonoBehaviour:
   m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
+  m_ScrollFactor: 1
   m_Viewport: {fileID: 789422877}
   m_HorizontalScrollbar: {fileID: 2009757421}
   m_VerticalScrollbar: {fileID: 456577067}
@@ -1287,6 +1291,17 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &1703166145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703166139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffd11e417120d247b9f818b65e92ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1727834499
 Prefab:
   m_ObjectHideFlags: 0

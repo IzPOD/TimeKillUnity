@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnapScrolling : MonoBehaviour {
 
+    public ScrollRect myScrollRect;
     public GameObject[] lvlButtons;
     [Range(0f, 20f)]
     public float snapSpeed;
@@ -13,6 +15,8 @@ public class SnapScrolling : MonoBehaviour {
     public int buttinOffset;
     [Range(1f, 20f)]
     public float scaleSpeed;
+    [Range(1, 10)]
+    public int scrollSpeed;
 
     private Vector2[] buttonPos;
     private RectTransform contentRect;
@@ -29,7 +33,8 @@ public class SnapScrolling : MonoBehaviour {
         for (int i = 0; i < lvlButtons.Length; i++) {
             buttonPos[i] = -lvlButtons[i].transform.localPosition;
         }
-	}
+        myScrollRect.scrollFactor = scrollSpeed;//https://forum.unity.com/threads/make-scrolling-move-faster-in-scrollrect.375116/
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
