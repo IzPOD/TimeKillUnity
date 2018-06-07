@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4798943459963982}
   - component: {fileID: 212077066079320182}
   - component: {fileID: 114742361167654786}
+  - component: {fileID: 114744765811180832}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -53,10 +54,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1576312333720078, guid: 7f3085b761f36254699bd4fce9ded3d3, type: 2}
-  TimeCircl: {fileID: 1761446887513432, guid: 9608df3aaaaf5004aa9380dc60aeb384, type: 2}
+  TimeCircl: {fileID: 1680930630799166, guid: 915b4c25425d8cd41bbf9f75c250f171, type: 2}
   Countdown: {fileID: 1648580814196658, guid: e15f9500bb0201241a322556222d52bf, type: 2}
-  projectileSpeed: 2
-  numberOfBullets: 8
+  projectileSpeed: 15
+  numberOfBullets: 1
+  swipeContrals: {fileID: 114744765811180832}
+--- !u!114 &114744765811180832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757804663031636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138da81dd81a4e7448a1e88000c67ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeRange: 25
 --- !u!212 &212077066079320182
 SpriteRenderer:
   m_ObjectHideFlags: 1

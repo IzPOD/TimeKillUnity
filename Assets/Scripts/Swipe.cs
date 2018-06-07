@@ -14,11 +14,12 @@ public class Swipe : MonoBehaviour {
 
         #region Standalone Inputs
         if (Input.GetMouseButtonDown(0)) {
-            tap = true;
+            //tap = true;
             isDraging = true;
             startTouch = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0)) {
+            tap = true;
             isDraging = false;
             Reset();
         }
