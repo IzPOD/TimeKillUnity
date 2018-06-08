@@ -22,13 +22,15 @@ public class WinOrLoseScript : MonoBehaviour {
 
                 if (!GameObject.Find("Target(Clone)")) {
                     Debug.Log("ti win");
-                    WinEndLvLMenuCanvas = Instantiate(WinEndLvLMenuCanvas);
-                    WinEndLvLMenuCanvas.transform.Find("NextLvLText").GetComponent<Button>().onClick.AddListener(delegate { LevelManager.GetComponent<LevelManager>().LoadLevel(NextLvLName); });
+                    //WinEndLvLMenuCanvas = Instantiate(WinEndLvLMenuCanvas);
+                    //WinEndLvLMenuCanvas.transform.Find("NextLvLText").GetComponent<Button>().onClick.AddListener(delegate { LevelManager.GetComponent<LevelManager>().LoadLevel(NextLvLName); });
+                    LevelManager.GetComponent<LevelManager>().LoadLevel(NextLvLName);
                 }
                 else {
                     Debug.Log("ti lose");
-                    LoseEndLvLMenuCanvas = Instantiate(LoseEndLvLMenuCanvas);
-                    LoseEndLvLMenuCanvas.transform.Find("Retry").GetComponent<Button>().onClick.AddListener(delegate { LevelManager.GetComponent<LevelManager>().RestartLevel(); });
+                    //LoseEndLvLMenuCanvas = Instantiate(LoseEndLvLMenuCanvas);
+                    //LoseEndLvLMenuCanvas.transform.Find("Retry").GetComponent<Button>().onClick.AddListener(delegate { LevelManager.GetComponent<LevelManager>().RestartLevel(); });
+                    LevelManager.GetComponent<LevelManager>().RestartLevel();
                 }
 
                 check = false;

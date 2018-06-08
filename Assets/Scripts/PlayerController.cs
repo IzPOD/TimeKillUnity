@@ -2,76 +2,102 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public GameObject bullet;
     public GameObject TimeCircl;
     public GameObject Countdown;
-    public float projectileSpeed= 2f;
+    public float projectileSpeed = 2f;
     public int numberOfBullets = 8;
     public Swipe swipeContrals;
-    
+    public GameObject readyText;
 
     List<GameObject> bulletsMasLeft = new List<GameObject>();
     List<GameObject> bulletsMasMiddle = new List<GameObject>();
     List<GameObject> bulletsMasRight = new List<GameObject>();
     List<GameObject> allBullets = new List<GameObject>();
 
-
+    private bool playerReady = false;
     private bool shootCheck = false;
     private int PlayerPositionOnLane = 1;
 
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (swipeContrals.Tap && playerReady==false)
+        {
+            playerReady = true;
+            StartLevel();
+            Destroy(readyText);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            PlayerPositionOnLane--;
+            if (PlayerPositionOnLane < 0)
+            {
+                PlayerPositionOnLane = 0;
+            }
+            PlayerPosition();
+        }
+
+        if (swipeContrals.SwipeLeft)
+        {
+            PlayerPositionOnLane--;
+            if (PlayerPositionOnLane < 0)
+            {
+                PlayerPositionOnLane = 0;
+            }
+            PlayerPosition();
+        }
+
+        if (swipeContrals.SwipeRight)
+        {
+            PlayerPositionOnLane++;
+            if (PlayerPositionOnLane > 2)
+            {
+                PlayerPositionOnLane = 2;
+            }
+            PlayerPosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            PlayerPositionOnLane++;
+            if (PlayerPositionOnLane > 2)
+            {
+                PlayerPositionOnLane = 2;
+            }
+            PlayerPosition();
+        }
+
+        if (shootCheck)
+        {
+            ShootBullets();
+        }
+
+
+    }
+
+    void StartLevel()
+    {
         InvokeRepeating("SpawnBullet", 3, 1);
         TimeCircl = Instantiate(TimeCircl);
         Countdown = Instantiate(Countdown);
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            PlayerPositionOnLane--;
-            if (PlayerPositionOnLane < 0) {
-                PlayerPositionOnLane = 0;
-            }
-            PlayerPosition();
-        }
-
-        if (swipeContrals.SwipeLeft) {
-            PlayerPositionOnLane--;
-            if (PlayerPositionOnLane < 0) {
-                PlayerPositionOnLane = 0;
-            }
-            PlayerPosition();
-        }
-
-        if (swipeContrals.SwipeRight) {
-            PlayerPositionOnLane++;
-            if (PlayerPositionOnLane > 2) {
-                PlayerPositionOnLane = 2;
-            }
-            PlayerPosition();
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            PlayerPositionOnLane++;
-            if (PlayerPositionOnLane > 2) {
-                PlayerPositionOnLane = 2;
-            }
-            PlayerPosition();
-        }
-
-        if (shootCheck) {
-            ShootBullets();
-        }
-
-        
-    }
-
-    void PlayerPosition() {
-        switch (PlayerPositionOnLane) {
+    void PlayerPosition()
+    {
+        switch (PlayerPositionOnLane)
+        {
             case 0:
                 transform.position = new Vector3(0.5f, 0.5f);
                 break;
@@ -84,9 +110,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void SpawnBullet() {
+    void SpawnBullet()
+    {
         Destroy(Countdown);
-        switch (PlayerPositionOnLane) {
+        switch (PlayerPositionOnLane)
+        {
             case 0:
                 bulletsMasLeft.Add(Instantiate(bullet));
                 BulletPosition(bulletsMasLeft, PlayerPositionOnLane);
@@ -105,7 +133,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         numberOfBullets--;
-        if (numberOfBullets == 0) {
+        if (numberOfBullets == 0)
+        {
             CancelInvoke("SpawnBullet");
             Destroy(TimeCircl);
             shootCheck = true;
@@ -114,8 +143,10 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void BulletPosition(List<GameObject> laneList, int numberLane) {
-        switch (laneList.Count) {
+    void BulletPosition(List<GameObject> laneList, int numberLane)
+    {
+        switch (laneList.Count)
+        {
             case 1:
                 laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.1f, 0);
                 break;
@@ -157,20 +188,24 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void ShootBullets() {
-        
-        if (allBullets[numberOfBullets] == null) {
+    void ShootBullets()
+    {
+
+        if (allBullets[numberOfBullets] == null)
+        {
             numberOfBullets++;
         }
-        else {
+        else
+        {
             allBullets[numberOfBullets].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
         }
 
-        if (numberOfBullets == allBullets.Count) {
+        if (numberOfBullets == allBullets.Count)
+        {
             shootCheck = false;
         }
 
-                
+
 
     }
 

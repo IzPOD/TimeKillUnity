@@ -8,6 +8,7 @@ public class Swipe : MonoBehaviour {
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
     public int swipeRange = 50;
+    private bool swipeIsDone = true;
 
     private void Update() {
         tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
@@ -17,11 +18,13 @@ public class Swipe : MonoBehaviour {
             //tap = true;
             isDraging = true;
             startTouch = Input.mousePosition;
+            swipeIsDone = true;
         }
-        else if (Input.GetMouseButtonUp(0)) {
-            tap = true;
-            isDraging = false;
-            Reset();
+        else if (Input.GetMouseButtonUp(0) && swipeIsDone) {
+            
+                tap = true;
+                isDraging = false;
+                Reset();
         }
 
         #endregion
@@ -30,10 +33,11 @@ public class Swipe : MonoBehaviour {
         if(Input.touches.Length > 0) {
             if(Input.touches[0].phase == TouchPhase.Began) {
                 isDraging = true;
-                tap = true;
+                //tap = true;
                 startTouch = Input.touches[0].position;
             }
-            else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled) {
+            else if ((Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled) && swipeIsDone) {
+                tap = true;
                 isDraging = false;
                 Reset();
             }
@@ -69,6 +73,7 @@ public class Swipe : MonoBehaviour {
                 else
                     swipeUp = true;
             }
+            swipeIsDone = false;
             Reset();
         }
     }

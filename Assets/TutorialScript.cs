@@ -11,7 +11,10 @@ public class TutorialScript : MonoBehaviour
     public Text text;
     public Swipe swipeContrals;
     public GameObject Player;
+    public GameObject targets;
 
+
+    private GameObject mask2;
     private int tutorCase = 0;
     private bool getTap = false;
     private bool getSwipeLeft = false;
@@ -27,17 +30,20 @@ public class TutorialScript : MonoBehaviour
     void Update()
     {
         if (swipeContrals.Tap && getTap)
-        {
-            tutorCase++;
+           
+            {
+                tutorCase++;
             Debug.Log(tutorCase);
+
             getTap = false;
             TutorNextStep();
 
         }
 
         if (swipeContrals.SwipeLeft && getSwipeLeft)
-        {
-            tutorCase++;
+
+            {
+                tutorCase++;
             Debug.Log(tutorCase);
             getSwipeLeft = false;
             TutorNextStep();
@@ -45,11 +51,14 @@ public class TutorialScript : MonoBehaviour
         }
 
         if (swipeContrals.SwipeRight && getSwipeRight)
-        {
-            tutorCase++;
+           
+
+            {
+                tutorCase++;
             Debug.Log(tutorCase);
             getSwipeRight = false;
             TutorNextStep();
+
 
         }
     }
@@ -70,6 +79,7 @@ public class TutorialScript : MonoBehaviour
                 break;
             case 2:
                 text.text = "проведи по экрану влево";
+                text.GetComponent<Text>().transform.position = new Vector3(1.5f, 1.4f, 0);
                 getSwipeLeft = true;
                 break;
             case 3:
@@ -86,13 +96,35 @@ public class TutorialScript : MonoBehaviour
                 mask.GetComponent<Transform>().position = new Vector3(1.5f, 2.65f);
                 mask.GetComponent<Transform>().localScale = new Vector3(0.33f, 1f);
                 text.GetComponent<Text>().transform.position = new Vector3(1.5f, 3.3f, 0);
+                getTap = true;
                 break;
             case 5:
-
+                text.text = "под его ритм треугольник создает пули";
+                text.GetComponent<Text>().transform.position = new Vector3(1.5f, 1.7f, 0);
+                mask2 = Instantiate(mask);
+                mask2.transform.position = new Vector3(1.5f, 1.1f, 0);
+                mask2.transform.localScale = new Vector3(1f, 0.15f, 0);
+                mask2.transform.parent = GameObject.Find("tutorial").transform;
+                Player.GetComponent<playerTutor>().InstantiateTimeCiecl();
+                Player.GetComponent<playerTutor>().SpawnBulletsTutor();
+                getTap = true;
                 break;
             case 6:
+                text.text = "истреби все мишени!";
+                Destroy(mask2);
+                targets.SetActive(true);
+                mask.transform.position = new Vector3(1.5f, 4.84f, 0);
+                mask.transform.localScale = new Vector3(1, 1, 1);
+                text.GetComponent<Text>().transform.position = new Vector3(1.5f, 4.1f, 0);
+                getTap = true;
                 break;
             case 7:
+
+                Player.GetComponent<playerTutor>().SpawnAndShootForTutor();
+                darkLayer.SetActive(false);
+                text.text = "";
+
+                
                 break;
         }
     }

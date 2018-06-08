@@ -59,6 +59,7 @@ MonoBehaviour:
   projectileSpeed: 15
   numberOfBullets: 1
   swipeContrals: {fileID: 114744765811180832}
+  readyText: {fileID: 0}
 --- !u!114 &114744765811180832
 MonoBehaviour:
   m_ObjectHideFlags: 1
