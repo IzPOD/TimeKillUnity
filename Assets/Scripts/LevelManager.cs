@@ -9,8 +9,8 @@ public class LevelManager : MonoBehaviour {
     private float secondsAll;
 
     public void LoadLevel(string name) {
-        Debug.Log("Level: " + name);
         SceneManager.LoadScene(name);
+        Debug.Log("Level: " + name);
     }
 
     public void RestartLevel() {
