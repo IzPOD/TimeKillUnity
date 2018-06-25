@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackButtonScript : MonoBehaviour
 {
     GameObject LevelManager;
+    public bool ifMainScene;
 
     // Use this for initialization
     void Start()
@@ -17,9 +18,12 @@ public class BackButtonScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            LevelManager.GetComponent<LevelManager>().LoadLevel("StartScene");
+            if (ifMainScene)
+                Application.Quit();
 
-            //Application.Quit();
+            else
+                LevelManager.GetComponent<LevelManager>().LoadLevel("StartScene");
+
         }
     }
 }

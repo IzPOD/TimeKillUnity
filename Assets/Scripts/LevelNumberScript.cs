@@ -13,7 +13,7 @@ public class LevelNumberScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         number=SceneManager.GetActiveScene().name;
-        text.text = "уровень: "+ number[5];
+        text.text = "уровень: "+ number[5]+ "\nНажми по готовности";
     }
 
     // Update is called once per frame
