@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SnapScrolling : MonoBehaviour {
-
+public class SnapScrolling : MonoBehaviour
+{
+    //https://youtu.be/njfc_QYKdio
     public ScrollRect myScrollRect;
     public GameObject[] lvlButtons;
     [Range(0f, 20f)]
@@ -17,6 +18,7 @@ public class SnapScrolling : MonoBehaviour {
     public float scaleSpeed;
     [Range(1, 10)]
     public int scrollSpeed;
+    public Sprite[] lvlsSprites;
 
     private Vector2[] buttonPos;
     private RectTransform contentRect;
@@ -25,23 +27,38 @@ public class SnapScrolling : MonoBehaviour {
     private bool isClicking;
     private Vector2 contentVector;
     private Vector2[] buttonScale;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+
+    void Start()
+    {
+        
         buttonScale = new Vector2[lvlButtons.Length];
         contentRect = GetComponent<RectTransform>();
         buttonPos = new Vector2[lvlButtons.Length];
-        for (int i = 0; i < lvlButtons.Length; i++) {
+        for (int i = 0; i < lvlButtons.Length; i++)
+        {
+            //Instantiate(lvlButtons[i],new Vector2(0,0),RectTransform);
             buttonPos[i] = -lvlButtons[i].transform.localPosition;
         }
         myScrollRect.scrollFactor = scrollSpeed;//https://forum.unity.com/threads/make-scrolling-move-faster-in-scrollrect.375116/
+
+        contentRect.anchoredPosition = new Vector2(0f, 3005.036f);
+        lvlButtons[5].transform.localScale = new Vector2 (1f,1f);    
+        
+
+        //lvlButtons[1].GetComponent<Image>().
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
         float nearestPos = float.MaxValue;
-        for (int i = 0; i < lvlButtons.Length; i++) {
+        for (int i = 0; i < lvlButtons.Length; i++)
+        {
             float distance = Mathf.Abs(contentRect.anchoredPosition.y - buttonPos[i].y);
-            if (distance < nearestPos) {
+            if (distance < nearestPos)
+            {
                 nearestPos = distance;
                 selectedButtonID = i;
             }
@@ -52,6 +69,7 @@ public class SnapScrolling : MonoBehaviour {
 
         }
         if (isScrolling) return;
+       
         contentVector.y = Mathf.SmoothStep(contentRect.anchoredPosition.y, buttonPos[selectedButtonID].y - 39.97525f, snapSpeed * Time.fixedDeltaTime);
         contentRect.anchoredPosition = contentVector;
         if (!isClicking) return;
@@ -61,12 +79,23 @@ public class SnapScrolling : MonoBehaviour {
 
     }
 
-    public void Scrolling(bool scroll) {
+    public void Scrolling(bool scroll)
+    {
         isScrolling = scroll;
     }
 
-    public void ScaleWhenClick(bool click) {
+    public void ScaleWhenClick(bool click)
+    {
         isClicking = click;
 
     }
+
+    void SpawnLvlsButtons()
+    {
+        for (int i = 0; i < lvlsSprites.Length; i++)
+        {
+            Instantiate(lvlButtons[i],transform);
+        }
+    }
+
 }
