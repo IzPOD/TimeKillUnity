@@ -261,6 +261,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2519bd959f249b44e93175347aef74d6, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &325398609 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114332601647642548, guid: 2519bd959f249b44e93175347aef74d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 325398608}
+  m_Script: {fileID: 11500000, guid: e7aaa1456479f02418f30e4b98cd21d4, type: 3}
 --- !u!1001 &343718109
 Prefab:
   m_ObjectHideFlags: 0
@@ -451,6 +457,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114940202731661022, guid: 149ad0edd45b01d45bb5965cd50df5e3,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 325398609}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 149ad0edd45b01d45bb5965cd50df5e3, type: 2}
   m_IsPrefabParent: 0
