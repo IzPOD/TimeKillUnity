@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1232318368909806}
+  m_IsPrefabParent: 1
+--- !u!1 &1232318368909806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224393375212260920}
+  - component: {fileID: 114272595662286916}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114272595662286916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232318368909806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed86d098dac6cdb4ab368038b30f92d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myScrollRect: {fileID: 0}
+  snapSpeed: 15
+  scaleOffset: 2
+  buttinOffset: 100
+  scaleSpeed: 12
+  scrollSpeed: 2
+  lvlsSprites:
+  - {fileID: 21300000, guid: cafadaa8d90587f41be22b3b03341b93, type: 3}
+  - {fileID: 21300000, guid: 3853a1c794f6f92409a1f831943ed036, type: 3}
+  - {fileID: 21300000, guid: 327f46929f3d2cf4388f922dc1963c3a, type: 3}
+  - {fileID: 21300000, guid: 61b2f1793be110a4cbdab9164781a758, type: 3}
+  - {fileID: 21300000, guid: e581ee34fef256f4782d21457998cd00, type: 3}
+  - {fileID: 21300000, guid: 15900750c48a3b0409d41bdce786a02b, type: 3}
+  lvlsPrefab: {fileID: 1741686362444276, guid: a54b05daa0f5f7442903b46af68f3a2f, type: 2}
+  levelManager: {fileID: 1006675121507278, guid: 2519bd959f249b44e93175347aef74d6,
+    type: 2}
+--- !u!224 &224393375212260920
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232318368909806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00012207031, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
+  m_SizeDelta: {x: 720, y: 1280}
+  m_Pivot: {x: 0.5, y: 0.5}

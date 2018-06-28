@@ -7,7 +7,6 @@ public class SnapScrolling : MonoBehaviour
 {
     //https://youtu.be/njfc_QYKdio
     public ScrollRect myScrollRect;
-    public GameObject[] lvlButtons;
     [Range(0f, 20f)]
     public float snapSpeed;
     [Range(0f, 5f)]
@@ -19,7 +18,10 @@ public class SnapScrolling : MonoBehaviour
     [Range(1, 10)]
     public int scrollSpeed;
     public Sprite[] lvlsSprites;
+    public GameObject lvlsPrefab;
+    public GameObject levelManager;
 
+    private GameObject[] lvlButtons;
     private Vector2[] buttonPos;
     private RectTransform contentRect;
     private int selectedButtonID;
@@ -27,11 +29,12 @@ public class SnapScrolling : MonoBehaviour
     private bool isClicking;
     private Vector2 contentVector;
     private Vector2[] buttonScale;
+    private float rangeBetweenButtons = 600;
     // Use this for initialization
 
     void Start()
     {
-        
+        SpawnLvlsButtons();
         buttonScale = new Vector2[lvlButtons.Length];
         contentRect = GetComponent<RectTransform>();
         buttonPos = new Vector2[lvlButtons.Length];
@@ -42,11 +45,9 @@ public class SnapScrolling : MonoBehaviour
         }
         myScrollRect.scrollFactor = scrollSpeed;//https://forum.unity.com/threads/make-scrolling-move-faster-in-scrollrect.375116/
 
-        contentRect.anchoredPosition = new Vector2(0f, 3005.036f);
-        lvlButtons[5].transform.localScale = new Vector2 (1f,1f);    
-        
+        //contentRect.anchoredPosition = new Vector2(0f, 3005.036f);
+        //lvlButtons[5].transform.localScale = new Vector2 (1f,1f);    
 
-        //lvlButtons[1].GetComponent<Image>().
     }
 
     // Update is called once per frame
@@ -69,7 +70,7 @@ public class SnapScrolling : MonoBehaviour
 
         }
         if (isScrolling) return;
-       
+
         contentVector.y = Mathf.SmoothStep(contentRect.anchoredPosition.y, buttonPos[selectedButtonID].y - 39.97525f, snapSpeed * Time.fixedDeltaTime);
         contentRect.anchoredPosition = contentVector;
         if (!isClicking) return;
@@ -92,10 +93,25 @@ public class SnapScrolling : MonoBehaviour
 
     void SpawnLvlsButtons()
     {
+        lvlButtons = new GameObject[lvlsSprites.Length];
+        float position = lvlsPrefab.transform.localPosition.y + rangeBetweenButtons;
+
         for (int i = 0; i < lvlsSprites.Length; i++)
         {
-            Instantiate(lvlButtons[i],transform);
+            lvlButtons[i] = Instantiate(lvlsPrefab, transform);
+            lvlButtons[i].GetComponent<Image>().sprite = lvlsSprites[i];
+            lvlButtons[i].transform.localPosition = new Vector2(0, position -= rangeBetweenButtons);
         }
+        //lvlButtons[0].GetComponent<Button>().onClick.AddListener(delegate { GetComponent<LevelManager>().getSeconds(0.2f); });
+        //lvlButtons[0].GetComponent<Button>().onClick.AddListener(delegate { GetComponent<LevelManager>().LoadLevel("TutorialScene"); });
+       
+        //lvlButtons[0].GetComponent<Button>().onClick.AddListener(delegate { GameObject.Find("LevelManager").GetComponent<LevelManager>().getSeconds(0.2f); });
+        //lvlButtons[0].GetComponent<Button>().onClick.AddListener(delegate { GameObject.Find("LevelManager").GetComponent<LevelManager>().LoadLevel("TutorialScene"); });
     }
+
+    //void TaskOnClick()
+    //{
+    //    GameObject.Find("LevelManager").GetComponent<LevelManager>().LoadLevel("TutorialScene");
+    //}
 
 }
