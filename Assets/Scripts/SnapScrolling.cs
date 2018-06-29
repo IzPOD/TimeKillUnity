@@ -7,7 +7,7 @@ public class SnapScrolling : MonoBehaviour
 {
     //https://youtu.be/njfc_QYKdio
     public ScrollRect myScrollRect;
-    public GameObject[] lvlButtons;
+    public static GameObject[] lvlButtons;
     [Range(0f, 20f)]
     public float snapSpeed;
     [Range(0f, 5f)]
@@ -31,6 +31,7 @@ public class SnapScrolling : MonoBehaviour
 
     void Start()
     {
+        AddAllButtonsOnArray();
         buttonScale = new Vector2[lvlButtons.Length];
         contentRect = GetComponent<RectTransform>();
         buttonPos = new Vector2[lvlButtons.Length];
@@ -86,6 +87,14 @@ public class SnapScrolling : MonoBehaviour
 
     }
 
+    void AddAllButtonsOnArray()
+    {
+        lvlButtons = new GameObject[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            lvlButtons[i] = transform.GetChild(i).gameObject;
+        }
 
+    }
 
 }

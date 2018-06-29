@@ -33,7 +33,6 @@ public class TutorialScript : MonoBehaviour
            
             {
                 tutorCase++;
-            Debug.Log(tutorCase);
 
             getTap = false;
             TutorNextStep();
@@ -44,7 +43,6 @@ public class TutorialScript : MonoBehaviour
 
             {
                 tutorCase++;
-            Debug.Log(tutorCase);
             getSwipeLeft = false;
             TutorNextStep();
 
@@ -55,7 +53,6 @@ public class TutorialScript : MonoBehaviour
 
             {
                 tutorCase++;
-            Debug.Log(tutorCase);
             getSwipeRight = false;
             TutorNextStep();
 
