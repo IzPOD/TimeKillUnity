@@ -9,8 +9,6 @@ public class WinOrLoseScript : MonoBehaviour
 {
 
     bool check = false;
-    public GameObject LoseEndLvLMenuCanvas;
-    public GameObject WinEndLvLMenuCanvas;
     public string NextLvLName;
     GameObject LevelManager;
     // Use this for initialization

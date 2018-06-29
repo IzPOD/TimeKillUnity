@@ -221,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BackButtonScript.cs" />
+    <Compile Include="Assets\FPSscript.cs" />
     <Compile Include="Assets\ProgressScript.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
