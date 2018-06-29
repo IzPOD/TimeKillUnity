@@ -161,6 +161,12 @@ Prefab:
       propertyPath: numberOfBullets
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114742361167654786, guid: 84c15771049896f42b4c158f5df44516,
+        type: 2}
+      propertyPath: TimeCircl
+      value: 
+      objectReference: {fileID: 1230541839336732, guid: ba6a60c47d91bc7439ff331d7d5158df,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114989487355568366, guid: 84c15771049896f42b4c158f5df44516, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 84c15771049896f42b4c158f5df44516, type: 2}
