@@ -8,10 +8,15 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public GameObject TimeCircl;
     public GameObject Countdown;
-    public float projectileSpeed = 2f;
-    public int numberOfBullets = 8;
     public Swipe swipeContrals;
     public GameObject readyText;
+
+    public static int numberOfBullets;
+    public static float projectileSpeed;
+    public static float projectileSpeedAfter;
+    public static float timeBeforeSpawnBullets;
+    public static float spawnFrequency;
+
 
     List<GameObject> bulletsMasLeft = new List<GameObject>();
     List<GameObject> bulletsMasMiddle = new List<GameObject>();
@@ -19,9 +24,9 @@ public class PlayerController : MonoBehaviour
     List<GameObject> allBullets = new List<GameObject>();
 
     private bool playerReady = false;
-    private bool shootCheck = false;
+    //private bool shootCheck = false;
     private int PlayerPositionOnLane = 1;
-
+    private int buletOnShot = 0;//
 
     // Use this for initialization
     void Start()
@@ -79,17 +84,17 @@ public class PlayerController : MonoBehaviour
             PlayerPosition();
         }
 
-        if (shootCheck)
-        {
-            ShootBullets();
-        }
+        //if (shootCheck)
+        //{
+            //ShootBullets();
+        //}
 
 
     }
 
     void StartLevel()
     {
-        InvokeRepeating("SpawnBullet", 3, 1);
+        InvokeRepeating("SpawnBullet", timeBeforeSpawnBullets, spawnFrequency);
         TimeCircl = Instantiate(TimeCircl);
         Countdown = Instantiate(Countdown);
     }
@@ -131,13 +136,23 @@ public class PlayerController : MonoBehaviour
                 allBullets.Add(bulletsMasRight[bulletsMasRight.Count - 1]);
                 break;
         }
-
+        allBullets[buletOnShot].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);//
+        buletOnShot++;//
         numberOfBullets--;
+        CountBulletsOnScene.SetNumberText();
         if (numberOfBullets == 0)
         {
             CancelInvoke("SpawnBullet");
             Destroy(TimeCircl);
-            shootCheck = true;
+            for (int i = 0; i < allBullets.Count; i++)//
+            {//
+                if (allBullets[i] != null)//
+                {//
+                    allBullets[i].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeedAfter, 0);//
+                }//
+
+            }//
+            //shootCheck = true;
         }
 
 
@@ -151,36 +166,36 @@ public class PlayerController : MonoBehaviour
                 laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.1f, 0);
                 break;
             case 2:
-                laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.1f, 0);
+                //laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.1f, 0);
                 laneList[1].GetComponent<Transform>().position = new Vector3(numberLane + 0.55f, 1.1f, 0);
                 break;
             case 3:
-                laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.4f, 1.1f, 0);
-                laneList[1].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.1f, 0);
+                //laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.4f, 1.1f, 0);
+                //laneList[1].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.1f, 0);
                 laneList[2].GetComponent<Transform>().position = new Vector3(numberLane + 0.6f, 1.1f, 0);
                 break;
             case 4:
-                laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.35f, 1.1f, 0);
-                laneList[1].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.1f, 0);
-                laneList[2].GetComponent<Transform>().position = new Vector3(numberLane + 0.55f, 1.1f, 0);
+                //laneList[0].GetComponent<Transform>().position = new Vector3(numberLane + 0.35f, 1.1f, 0);
+                //laneList[1].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.1f, 0);
+                //laneList[2].GetComponent<Transform>().position = new Vector3(numberLane + 0.55f, 1.1f, 0);
                 laneList[3].GetComponent<Transform>().position = new Vector3(numberLane + 0.65f, 1.1f, 0);
                 break;
             case 5:
                 laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.2f, 0);
                 break;
             case 6:
-                laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.2f, 0);
+                //laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.2f, 0);
                 laneList[5].GetComponent<Transform>().position = new Vector3(numberLane + 0.55f, 1.2f, 0);
                 break;
             case 7:
-                laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.4f, 1.2f, 0);
-                laneList[5].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.2f, 0);
+                //laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.4f, 1.2f, 0);
+                //laneList[5].GetComponent<Transform>().position = new Vector3(numberLane + 0.5f, 1.2f, 0);
                 laneList[6].GetComponent<Transform>().position = new Vector3(numberLane + 0.6f, 1.2f, 0);
                 break;
             case 8:
-                laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.35f, 1.2f, 0);
-                laneList[5].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.2f, 0);
-                laneList[6].GetComponent<Transform>().position = new Vector3(numberLane + 0.55f, 1.2f, 0);
+                //laneList[4].GetComponent<Transform>().position = new Vector3(numberLane + 0.35f, 1.2f, 0);
+                //laneList[5].GetComponent<Transform>().position = new Vector3(numberLane + 0.45f, 1.2f, 0);
+                //laneList[6].GetComponent<Transform>().position = new Vector3(numberLane + 0.55f, 1.2f, 0);
                 laneList[7].GetComponent<Transform>().position = new Vector3(numberLane + 0.65f, 1.2f, 0);
                 break;
         }
@@ -188,25 +203,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void ShootBullets()
-    {
+    //void ShootBullets()
+    //{
 
-        if (allBullets[numberOfBullets] == null)
-        {
-            numberOfBullets++;
-        }
-        else
-        {
-            allBullets[numberOfBullets].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
-        }
+    //    if (allBullets[numberOfBullets] == null)
+    //    {
+    //        numberOfBullets++;
+    //    }
+    //    else
+    //    {
+    //        allBullets[numberOfBullets].GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+    //    }
 
-        if (numberOfBullets == allBullets.Count)
-        {
-            shootCheck = false;
-        }
+    //    if (numberOfBullets == allBullets.Count)
+    //    {
+    //        shootCheck = false;
+    //    }
 
 
 
-    }
+    //}
 
 }

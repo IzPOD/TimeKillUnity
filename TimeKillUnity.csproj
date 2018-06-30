@@ -220,15 +220,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BackButtonScript.cs" />
-    <Compile Include="Assets\FPSscript.cs" />
-    <Compile Include="Assets\ProgressScript.cs" />
+    <Compile Include="Assets\CountdownAnimationSpeedScript.cs" />
+    <Compile Include="Assets\LevelSettingsScript.cs" />
+    <Compile Include="Assets\MovingObjAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\BackButtonScript.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
+    <Compile Include="Assets\Scripts\CountBulletsOnScene.cs" />
+    <Compile Include="Assets\Scripts\FPSscript.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\LevelNumberScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\playerTutor.cs" />
     <Compile Include="Assets\Scripts\Position.cs" />
+    <Compile Include="Assets\Scripts\ProgressScript.cs" />
     <Compile Include="Assets\Scripts\SnapScrolling.cs" />
     <Compile Include="Assets\Scripts\SpawnTargets.cs" />
     <Compile Include="Assets\Scripts\Sredder.cs" />

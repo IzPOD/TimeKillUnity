@@ -25,7 +25,7 @@ public class WinOrLoseScript : MonoBehaviour
             if (!GameObject.Find("Bullet(Clone)"))
             {
 
-                if (!GameObject.Find("Target(Clone)"))
+                if (!GameObject.FindGameObjectWithTag("Target"))
                 {
                     Debug.Log("ti win");
                     //WinEndLvLMenuCanvas = Instantiate(WinEndLvLMenuCanvas);
