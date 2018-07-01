@@ -375,7 +375,8 @@ MonoBehaviour:
           m_StringArgument: StartScene
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114332601647642548, guid: 2519bd959f249b44e93175347aef74d6,
+          type: 2}
         m_MethodName: ChangeFlag
         m_Mode: 1
         m_Arguments:

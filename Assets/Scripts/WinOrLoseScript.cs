@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class WinOrLoseScript : MonoBehaviour
 {
-
+    public ProgressScript progressScript;
     bool check = false;
     public string NextLvLName;
     GameObject LevelManager;
@@ -34,6 +34,7 @@ public class WinOrLoseScript : MonoBehaviour
                     if (ProgressScript.progress < lvlNymber)
                     {
                         ProgressScript.progress = lvlNymber;
+                        progressScript.SaveFile();
                     }
 
                     LevelManager.GetComponent<LevelManager>().LoadLevel(NextLvLName);
@@ -67,4 +68,5 @@ public class WinOrLoseScript : MonoBehaviour
         int.TryParse(oneLetter, out outInt);
         return outInt;
     }
+    
 }

@@ -42,8 +42,9 @@ public class SnapScrolling : MonoBehaviour
         }
         myScrollRect.scrollFactor = scrollSpeed;//https://forum.unity.com/threads/make-scrolling-move-faster-in-scrollrect.375116/
         
-        contentRect.anchoredPosition = new Vector2(0f, Mathf.Abs(lvlButtons[flagLvlsPosition].GetComponent<RectTransform>().anchoredPosition.y) - 39.986f);
-        lvlButtons[flagLvlsPosition].transform.localScale = new Vector2 (1f,1f);    
+        SetButtonPosition(flagLvlsPosition);
+        
+        
     }
 
     // Update is called once per frame
@@ -95,6 +96,15 @@ public class SnapScrolling : MonoBehaviour
             lvlButtons[i] = transform.GetChild(i).gameObject;
         }
 
+    }
+
+
+
+
+    public void SetButtonPosition(int flagLvlsPosition)
+    {
+        contentRect.anchoredPosition = new Vector2(0f, Mathf.Abs(lvlButtons[flagLvlsPosition].GetComponent<RectTransform>().anchoredPosition.y) - 39.986f);
+        lvlButtons[flagLvlsPosition].transform.localScale = new Vector2(1f, 1f);
     }
 
 }
