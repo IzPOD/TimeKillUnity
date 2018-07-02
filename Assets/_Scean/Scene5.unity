@@ -507,7 +507,7 @@ Prefab:
     - target: {fileID: 114917014023172184, guid: efeb2d847bed6dd4589d0bce3cb7a534,
         type: 2}
       propertyPath: NextLvLName
-      value: StartScene
+      value: Scene6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efeb2d847bed6dd4589d0bce3cb7a534, type: 2}
